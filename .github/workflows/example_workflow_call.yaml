@@ -1,8 +1,7 @@
 name: Run Actions
 run-name: ${{ github.actor }} run test
 
-on:
-  [push]
+on: workflow_dispatch
 
 jobs:
   ubuntu-output:
@@ -20,7 +19,7 @@ jobs:
           volontary-crashing
         shell: bash
   send-notif:
-    runs-on: windows
+    runs-on: ubuntu-latest
     if: always()
     needs: ubuntu-output
     steps:
