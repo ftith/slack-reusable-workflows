@@ -1,5 +1,5 @@
 name: Run Actions
-run-name: ${{ gitea.actor }} run test
+run-name: ${{ github.actor }} run test
 
 on:
   [push]
