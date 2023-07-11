@@ -1,0 +1,29 @@
+name: Run Actions
+run-name: ${{ gitea.actor }} run test
+
+on:
+  [push]
+
+jobs:
+  ubuntu-output:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Event information
+        env:
+            EVENT_CONTEXT: ${{ toJSON(github.event) }}
+        run: echo $EVENT_CONTEXT
+        shell: bash
+      - name: OS information
+        run: |
+          echo ${{ runner.os }}
+          volontary-crashing
+        shell: bash
+  send-notif:
+    runs-on: windows
+    if: always()
+    needs: ubuntu-output
+    steps:
+      - name: Event information
+        run: echo "test"
+        if: always()
