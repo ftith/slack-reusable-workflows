@@ -28,7 +28,7 @@ runs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "Build on repository <${{ gitea.event.repository.html_url }}|${{ gitea.event.repository.full_name }}> status: *${{ inputs.job_build_status }}*"
+                  "text": "Build on repository <${{ github.event.repository.html_url }}|${{ github.event.repository.full_name }}> status: *${{ inputs.job_build_status }}*"
                 }
               }
             ],
@@ -40,28 +40,28 @@ runs:
                           "type": "section",
                           "text": {
                               "type": "mrkdwn",
-                              "text": "*Branch*\n${{ gitea.ref_name }}"
+                              "text": "*Branch*\n${{ github.ref_name }}"
                           }
                       },
                       {
                           "type": "section",
                           "text": {
                               "type": "mrkdwn",
-                              "text": "*Actions URL*\n<${{ gitea.event.repository.html_url }}/actions/runs/${{ gitea.run_number }}|job URL>"
+                              "text": "*Actions URL*\n<${{ github.event.repository.html_url }}/actions/runs/${{ github.run_number }}|job URL>"
                           }
                       },
                       {
                           "type": "section",
                           "text": {
                               "type": "mrkdwn",
-                              "text": "*Commit*\n<${{ gitea.event.head_commit.url }}|${{ gitea.event.head_commit.id }}>"
+                              "text": "*Commit*\n<${{ github.event.head_commit.url }}|${{ github.event.head_commit.id }}>"
                           }
                       },
                       {
                           "type": "section",
                           "text": {
                               "type": "mrkdwn",
-                              "text": "*Author*\n${{ gitea.event.head_commit.committer.username }}"
+                              "text": "*Author*\n${{ github.event.head_commit.committer.username }}"
                           }
                       }
                   ]

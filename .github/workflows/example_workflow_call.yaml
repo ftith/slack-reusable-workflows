@@ -6,7 +6,6 @@ on: workflow_dispatch
 jobs:
   ubuntu-output:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - name: Event information
         env:
@@ -19,10 +18,9 @@ jobs:
           volontary-crashing
         shell: bash
   send-notif:
-    runs-on: ubuntu-latest
     if: always()
     needs: ubuntu-output
-    steps:
-      - name: Event information
-        run: echo "test"
-        if: always()
+    uses: ./.github/workflows/_send_notif.yaml
+    with:
+      job_build_status: ${{ needs.ubuntu-output.result }}
+    secrets: inherit
